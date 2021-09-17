@@ -39,6 +39,30 @@
     border: 1px solid purple;
 
 }
+@media ( min-width: 576px ) {
+    .home-container{
+     padding: 15px;
+     font-size: 40px;
+    }
+    .home-container button{
+        width: 506px;
+       }
+    .home-content-container h1 {
+        width: 506px;
+        margin-bottom: 20px;
+
+    }
+    .home-content-container p {
+        width: 506px;
+        margin-bottom: 20px;
+
+    }
+    .home-image-container svg{
+        width: 506px;
+     
+    
+    }
+}
 .home-image-container svg{
     width: 100%;
     height: auto;
