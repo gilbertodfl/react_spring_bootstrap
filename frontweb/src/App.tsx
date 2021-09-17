@@ -1,19 +1,15 @@
 //import React from 'react';
-import './assets/styles/custom.scss';
 import './App.css';
-import Navbar from 'components/Navbar';
-
+import './assets/styles/custom.scss';
+import Home from 'pages/Home';
 
 // pagina principal
 function App() {
-
   return (
     <>
-    <Navbar />
-     <h1>Hello World!!</h1>
-     </>
-     );
- 
+      <Home />
+    </>
+  );
 }
 
 export default App;
