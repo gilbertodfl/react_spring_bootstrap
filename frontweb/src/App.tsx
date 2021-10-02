@@ -1,14 +1,15 @@
 //import React from 'react';
+//import Home from 'pages/Home';
 import './App.css';
 import './assets/styles/custom.scss';
-import Home from 'pages/Home';
+import Routes from 'Routes';
 
 // pagina principal
 function App() {
   return (
-    <>
-      <Home />
-    </>
+    
+     <Routes />
+    
   );
 }
 
