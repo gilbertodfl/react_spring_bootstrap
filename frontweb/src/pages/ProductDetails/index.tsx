@@ -4,15 +4,15 @@ import './styles.css';
 
 const ProductDetails =  () => {
 return(
-<div className="product-details-container">
-    <div className="base-card product-details-card">
-        <div className="go-back-container">
+<div className="product-details-container ">
+    <div className=" product-details-card">
+        <div className="go-back-container ">
             <ArrowIcon />
             <h2>voltar</h2>
         </div>
 
     </div>
-    <div className="row">
+    <div className="row base-card " >
         <div className="col-xl-6">
             <div className="img-container">
                 <img src="https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/2-big.jpg" alt="nome do produto" /> 
