@@ -16,7 +16,7 @@ return(
                     <h1>Category CRUD</h1>
                 </Route>
                 <Route path="/admin/users"> 
-                    <h1>User CRUD</h1>
+                    <h1>Users CRUD</h1>
                 </Route>
             </Switch>
             

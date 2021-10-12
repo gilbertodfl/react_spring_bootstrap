@@ -1,8 +1,24 @@
 import { ReactComponent as ArrowIcon } from 'assets/images/arrow.svg';
 import ProductPrice from 'components/ProductPrice';
+import { Product } from 'types/product';
+import axios from 'axios'
 import './styles.css';
 import { Link } from 'react-router-dom';
+import { BASE_URL } from 'util/requests';
+import { useState, useEffect } from 'react';
 const ProductDetails = () => {
+
+  const [product, setProduct ] = useState<Product>();
+  
+useEffect( () => {
+  axios.get( BASE_URL+"/products/1")
+  .then(response => {
+      setProduct ( response.data );
+      console.log( response.data)
+  })
+}, []);
+ 
+  
   return (
     <div className="product-details-container ">
       <div className=" product-details-card">
@@ -18,22 +34,21 @@ const ProductDetails = () => {
         
             <div className="img-container">
               <img
-                src="https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/2-big.jpg"
-                alt="nome do produto"
+                src={product?.imgUrl}
+                alt={product?.name}
               />
             </div>
          
           <div className="name-price-container">
-            <h1>Nome Produto</h1>
-            <ProductPrice price={1234.56} />
+            <h1>{product?.name}</h1>
+            { product && <ProductPrice price={product?.price} />} 
           </div>
         </div>
         <div className="col-xl-6">
           <div className="description-container">
             <h2>Descrição do Produto</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
-              cupiditate.
+            {product?.description}
             </p>
           </div>
         </div>
