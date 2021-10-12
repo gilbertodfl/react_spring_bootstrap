@@ -47,6 +47,13 @@ useEffect( () => {
          
           <div className="name-price-container">
             <h1>{product?.name}</h1>
+      °  Isto é um comentário de teste
+      Pressione no code ctrl + alt + / e comece a escrever seu comentário
+      
+      {/* comentário 2  
+        este é mais elegante, prefiro este modo*/}
+
+°            O && aqui é necessário porque temos q garantir deu price foi carregado.
             { product && <ProductPrice price={product?.price} />} 
           </div>
         </div>
