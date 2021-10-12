@@ -3,20 +3,26 @@ import ProductPrice from 'components/ProductPrice';
 import { Product } from 'types/product';
 import axios from 'axios'
 import './styles.css';
-import { Link } from 'react-router-dom';
+import { Link ,useParams } from 'react-router-dom';
 import { BASE_URL } from 'util/requests';
 import { useState, useEffect } from 'react';
+
+type  UrlParams = {
+  productId: string; 
+}
 const ProductDetails = () => {
 
+  const { productId} = useParams<UrlParams>();
   const [product, setProduct ] = useState<Product>();
-  
+ 
+ //useEffect( minhafunção lambida, [ objetos que quero "observar"]) 
 useEffect( () => {
-  axios.get( BASE_URL+"/products/1")
+  axios.get( `${BASE_URL}/products/${productId}`)
   .then(response => {
       setProduct ( response.data );
-      console.log( response.data)
+ //     console.log( response.data)
   })
-}, []);
+}, [productId]);
  
   
   return (
