@@ -6,6 +6,8 @@ import './styles.css';
 import { Link ,useParams } from 'react-router-dom';
 import { BASE_URL } from 'util/requests';
 import { useState, useEffect } from 'react';
+import ProductInfoLoader from './ProductDetailsLoader';
+import ProductDetailsLoader from './ProductDetailsLoader';
 
 type  UrlParams = {
   productId: string; 
@@ -14,14 +16,19 @@ const ProductDetails = () => {
 
   const { productId} = useParams<UrlParams>();
   const [product, setProduct ] = useState<Product>();
+  const [ isLoading, setIsLoading ] = useState(true);
+
  
  //useEffect( minhafunção lambida, [ objetos que quero "observar"]) 
 useEffect( () => {
+  setIsLoading(true);
   axios.get( `${BASE_URL}/products/${productId}`)
   .then(response => {
       setProduct ( response.data );
- //     console.log( response.data)
   })
+  .finally( () => {
+    setIsLoading(false);
+  });
 }, [productId]);
  
   
@@ -38,6 +45,7 @@ useEffect( () => {
       <div className="row base-card ">
         <div className="col-xl-6">
         
+           {isLoading ? <ProductInfoLoader /> :<> 
             <div className="img-container">
               <img
                 src={product?.imgUrl}
@@ -47,27 +55,29 @@ useEffect( () => {
          
           <div className="name-price-container">
             <h1>{product?.name}</h1>
-      °  Isto é um comentário de teste
-      Pressione no code ctrl + alt + / e comece a escrever seu comentário
-      
-      {/* comentário 2  
-        este é mais elegante, prefiro este modo*/}
-
-°            O && aqui é necessário porque temos q garantir deu price foi carregado.
             { product && <ProductPrice price={product?.price} />} 
-          </div>
+          </div> 
+          </> }
         </div>
         <div className="col-xl-6">
-          <div className="description-container">
-            <h2>Descrição do Produto</h2>
-            <p>
-            {product?.description}
-            </p>
-          </div>
-        </div>
+            { isLoading ? <ProductDetailsLoader /> :
+              <div className="description-container">
+              <h2>Descrição do Produto</h2>
+              <p>
+              {product?.description}
+              </p>
+            </div>}
+         </div>
       </div>
     </div>
   );
 };
 
 export default ProductDetails;
+
+
+
+{/* comentário 2  
+  este é mais elegante, prefiro este modo*/}
+
+
